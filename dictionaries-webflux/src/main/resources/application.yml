@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: settingswebflux
+  r2dbc:
+    url: "EXPECTED_POSTGRES_R2DBC_URL_HERE"
+    username: "EXPECTED_POSTGRES_DATABASE_USERNAME_HERE"
+    password: "EXPECTED_POSTGRES_DATABASE_PASSWORD_HERE"
+    pool:
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:rsa_public_key.key
+          principal-claim-name: "user_name"
+          authority-prefix: ""
+          authorities-claim-name: "authorities"
+
+management:
+  endpoint:
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "health,metrics,prometheus"
+      base-path: /
+      path-mapping:
+        health: management/health
+        metrics: management/metrics
+        prometheus: metrics
+logging:
+  level:
+    io.r2dbc: WARN
+    root: INFO
+
+server:
+  error:
+    include-message: always

@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: springtomcatvt
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    url: "EXPECTED_POSTGRES_JDBC_URL_HERE"
+    username: "EXPECTED_POSTGRES_DATABASE_USERNAME_HERE"
+    password: "EXPECTED_POSTGRES_DATABASE_PASSWORD_HERE"
+    hikari:
+      schema: "EXPECTED_POSTGRES_DATABASE_SCHEMA_HERE"
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:rsa_public_key.key
+          principal-claim-name: "user_name"
+          authority-prefix: ""
+          authorities-claim-name: "authorities"
+management:
+  endpoint:
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /
+      path-mapping:
+        health: management/health
+        metrics: management/metrics
+        prometheus: metrics
+
+logging:
+  level:
+    root: info

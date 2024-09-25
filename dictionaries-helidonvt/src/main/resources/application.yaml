@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  host: 0.0.0.0
+
+db:
+  source: jdbc
+  connection:
+    url: "EXPECTED_POSTGRES_JDBC_URL_HERE"
+    username: "EXPECTED_POSTGRES_DATABASE_USERNAME_HERE"
+    password: "EXPECTED_POSTGRES_DATABASE_PASSWORD_HERE"
+    schema: "EXPECTED_POSTGRES_DATABASE_SCHEMA_HERE"
+
+security:
+  providers:
+    - jwt:
+        optional: true
+        atn-token:
+          jwk.resource.resource-path: "verifying-jwk.json"
+          jwt-audience: "EXPECTED_HELIDON_JWT_VERIFY_AUD_HERE"
+  web-server:
+    defaults:
+      authenticate: true
+    paths:
+      - path: "/api/v1/dictionary"
+        methods: [ "get", "post", "put", "delete" ]
+      - path: "/api/v1/dictionary/{category}/{name}"
+        methods: [ "get", "put", "delete" ]

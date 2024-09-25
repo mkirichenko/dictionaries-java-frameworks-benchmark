@@ -1,0 +1,15 @@
+ktor:
+  application:
+    modules:
+      - ru.tbank.dictionaries.ktor.ApplicationKt.module
+  deployment:
+    port: 8080
+  logging:
+    level: INFO
+jwt:
+  public-key: EXPECTED_RSA_PUBLIC_KEY_X509_HERE
+postgres:
+  url: "EXPECTED_POSTGRES_JDBC_URL_HERE"
+  user: "EXPECTED_POSTGRES_DATABASE_USERNAME_HERE"
+  password: "EXPECTED_POSTGRES_DATABASE_PASSWORD_HERE"
+  schema: "EXPECTED_POSTGRES_DATABASE_SCHEMA_HERE"

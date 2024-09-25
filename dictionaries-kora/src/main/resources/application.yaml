@@ -1,0 +1,30 @@
+logging:
+  levels:
+    ru.tinkoff.kora.http.server.common.telemetry: "INFO"
+    ru.tinkoff.kora.http.client.common.telemetry.DefaultHttpClientTelemetry: "INFO"
+    ru.tinkoff.kora.http.server.common.HttpServer: "WARN"
+
+httpServer:
+  privateApiHttpLivenessPath: "/system/liveness"
+  privateApiHttpReadinessPath: "/system/readiness"
+  privateApiHttpMetricsPath: "/metrics"
+  telemetry:
+    logging:
+      enabled: true
+    metrics:
+      enabled: true
+
+db:
+  jdbcUrl: "EXPECTED_POSTGRES_JDBC_URL_HERE"
+  username: "EXPECTED_POSTGRES_DATABASE_USERNAME_HERE"
+  password: "EXPECTED_POSTGRES_DATABASE_PASSWORD_HERE"
+  schema: "EXPECTED_POSTGRES_DATABASE_SCHEMA_HERE"
+  poolName: "kora"
+  telemetry:
+    logging:
+      enabled: true
+    metrics:
+      enabled: true
+
+jwt:
+  publicKey: EXPECTED_RSA_PUBLIC_KEY_X509_HERE
